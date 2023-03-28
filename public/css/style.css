@@ -320,7 +320,8 @@ button {
 .logo a {
     color: #910a0a;
     font-size: 25px;
-    font-weight: 600;
+    font-weight: 800;
+
 }
 
 .site-navbar {
@@ -1021,8 +1022,8 @@ button {
 /** footer **/
 
 .footer {
-    margin-top: 90px;
-    padding-top: 90px;
+    margin-top: 30px;
+    padding-top: 30px;
     background: #2d2d2d;
     text-align: center;
 }
@@ -1223,4 +1224,11 @@ ul.social_icon li a i:hover {
 
 .portfolio_page .footer {
     margin-top: 60px;
+}
+#footerP {
+    color: #fdc001;
+    font-size: 30px;
+    padding-bottom: 20px;
+    line-height: 23px;
+    font-weight: bold;
 }
