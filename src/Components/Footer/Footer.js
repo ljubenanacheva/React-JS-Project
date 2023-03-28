@@ -2,9 +2,7 @@ export const Footer = () => {
   return (
     <footer>
       <div className="footer">
-        <div className="container">
-          <p id="footerP">Landmarks of Bulgaria</p>
-        </div>
+        <p id="footerP">Landmarks of Bulgaria 2023©</p>
       </div>
     </footer>
   );
