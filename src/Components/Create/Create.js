@@ -1,81 +1,95 @@
+import Button from "react-bootstrap/Button";
+import Col from "react-bootstrap/Col";
+import Form from "react-bootstrap/Form";
+import Row from "react-bootstrap/Row";
+
+import styles from "./Create.module.css";
+
 export const Create = () => {
   return (
-    <div className="page-wrapper bg-red p-t-180 p-b-100 font-robo">
-      <div className="wrapper wrapper--w960">
-        <div className="card card-2">
-          <div className="card-body">
-            <h2 className="title">Create Landmark</h2>
-            <form method="POST">
-              <div className="input-group">
-                <input
-                  className="input--style-2"
-                  type="text"
-                  placeholder="Name"
-                  name="name"
-                />
-              </div>
-              <div className="row row-space">
-                <div className="col-2">
-                  <div className="input-group">
-                    <input
-                      className="input--style-2 js-datepicker"
-                      type="text"
-                      placeholder="Birthdate"
-                      name="birthday"
-                    />
-                    <i className="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
-                  </div>
-                </div>
-                <div className="col-2">
-                  <div className="input-group">
-                    <div className="rs-select2 js-select-simple select--no-search">
-                      <select name="gender">
-                        <option disabled="disabled" selected="selected">
-                          Gender
-                        </option>
-                        <option>Male</option>
-                        <option>Female</option>
-                        <option>Other</option>
-                      </select>
-                      <div className="select-dropdown"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="input-group">
-                <div className="rs-select2 js-select-simple select--no-search">
-                  <select name="class">
-                    <option disabled="disabled" selected="selected">
-                      Class
-                    </option>
-                    <option>Class 1</option>
-                    <option>Class 2</option>
-                    <option>Class 3</option>
-                  </select>
-                  <div className="select-dropdown"></div>
-                </div>
-              </div>
-              <div className="row row-space">
-                <div className="col-2">
-                  <div className="input-group">
-                    <input
-                      className="input--style-2"
-                      type="text"
-                      placeholder="Registration Code"
-                      name="res_code"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div className="p-t-30">
-                <button className="btn btn--radius btn--green" type="submit">
-                  Submit
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
+    <div className={styles.divForm}>
+      <h1 className={styles.title}>Create a Landmark</h1>
+      <div>
+        <img src=".\images\landmark.png" className={styles.image} />
       </div>
+      <Form className={styles.form}>
+        <Form.Group as={Row} className="mb-3" controlId="formHorizontalEmail">
+          <Form.Label column sm={2} className={styles.label}>
+            Name
+          </Form.Label>
+          <Col sm={10}>
+            <Form.Control
+              className={styles.formField}
+              type="text"
+              placeholder="Name"
+            />
+          </Col>
+        </Form.Group>
+
+        <Form.Group
+          as={Row}
+          className="mb-3"
+          controlId="formHorizontalPassword"
+        >
+          <Form.Label column sm={2} className={styles.label}>
+            Location
+          </Form.Label>
+          <Col sm={10}>
+            <Form.Control
+              className={styles.formField}
+              type="text"
+              placeholder="Location"
+            />
+          </Col>
+        </Form.Group>
+
+        <Form.Group
+          as={Row}
+          className="mb-3"
+          controlId="formHorizontalPassword"
+        >
+          <Form.Label column sm={2} className={styles.label}>
+            Image Url
+          </Form.Label>
+          <Col sm={10}>
+            <Form.Control
+              className={styles.formField}
+              type="text"
+              placeholder="Image Url"
+            />
+          </Col>
+        </Form.Group>
+
+        <Form.Group
+          as={Row}
+          className={styles.selectForm}
+          controlId="formHorizontalPassword"
+        >
+          <Form.Label column sm={15} className={styles.label}>
+            Category
+          </Form.Label>
+          <Form.Select className={styles.select}>
+            <option>Waterfalls</option>
+            <option>Wonders of Nature</option>
+            <option>Architecture</option>
+            <option>Historical Places</option>
+          </Form.Select>
+          <br />
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+          <Form.Label className={styles.label}>Description</Form.Label>
+          <Form.Control as="textarea" rows={4} className={styles.textArea} />
+        </Form.Group>
+
+        <Form.Group as={Row} className="mb-3">
+          <Col sm={{ span: 10, offset: 2 }}>
+            <Button type="submit" className={styles.button}>
+              Create Landmark
+            </Button>
+          </Col>
+        </Form.Group>
+      </Form>
     </div>
   );
 };

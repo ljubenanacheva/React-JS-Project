@@ -1,0 +1,76 @@
+.divForm{
+    background-image: url('../../../public/images/createBackground.jpg');
+    background-repeat: no-repeat;
+    width: 700px;
+    display: block;
+    align-items: center;
+    border: solid rgb(54, 54, 53) 2px;
+    border-radius: 30px;
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-top: 10%;
+    margin-bottom: 5%;
+}
+.image{
+    width: 120px;
+    margin-left: 300px;
+    margin-top: 5px;
+    margin-bottom: 0px;
+   
+}
+.form{
+    width: 600px;
+    display: block;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 10%;
+    margin: auto;
+  }
+  .title{
+    color: #e7640c;
+  font-weight: bold;
+  font-size: 50px;
+  margin-top: 5px;
+  margin-left: auto;
+    text-align: center;
+  }
+  .button{
+    background-color: #ffa908;
+    border: #fd7201;
+    font-size: 20px;
+    box-shadow: 0px 0px 2px 2px rgb(243, 121, 22);
+    width: 200px;
+    margin-right: 70px;
+    margin-top: 20px;
+  }
+  .button:hover {
+    background-color:#f86605;
+    transition: 0.7s;
+}
+.selectForm{
+    margin-bottom: 20px;
+   
+}
+.select{
+    margin-left: 40px;
+    width: 450px;
+    border: solid rgb(197, 148, 13) 2px;
+    margin-top: 0px;
+}
+.formField{
+    width: 380px;
+    border: solid rgb(197, 148, 13) 2px;
+    margin-top: 5px;
+}
+.textArea{
+    width: 450px;
+    border: solid rgb(197, 148, 13) 2px;
+    margin-top: 0px;
+    margin-left: 30px;
+}
+.label{
+    font-style: oblique;
+    font-size: 17px;
+    font-weight: bold;
+}
