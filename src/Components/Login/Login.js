@@ -1,12 +1,14 @@
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
+import styles from "./Login.module.css";
+
 export const Login = () => {
   return (
-    <div>
-      <h1>Login</h1>
-      <h5>Please enter your credentials.</h5>
-      <Form>
+    <div className={styles.loginForm}>
+      <h1 className={styles.title}>Login</h1>
+      <h5 className={styles.secondTitle}>Please enter your credentials.</h5>
+      <Form className={styles.form}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
           <Form.Control type="email" placeholder="Enter email" />
@@ -26,7 +28,7 @@ export const Login = () => {
           </span>
         </p>
 
-        <Button variant="primary" type="submit">
+        <Button variant="primary" className={styles.button} type="submit">
           Submit
         </Button>
       </Form>
