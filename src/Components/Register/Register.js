@@ -5,12 +5,13 @@ export const Register = () => {
   return (
     <div>
       <h1>Register</h1>
+      <h5>Please fill in this form to create an account.</h5>
       <Form>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
           <Form.Control type="email" placeholder="Enter email" />
           <Form.Text className="text-muted">
-            We'll never share your email with anyone else.
+            Please enter a valid email.
           </Form.Text>
         </Form.Group>
 
@@ -23,6 +24,12 @@ export const Register = () => {
           <Form.Label> Repeat Password</Form.Label>
           <Form.Control type="repassword" placeholder="Repeat your password." />
         </Form.Group>
+
+        <p class="field">
+          <span>
+            If you have profile click <a href="#">here</a>
+          </span>
+        </p>
 
         <Button variant="primary" type="submit">
           Submit
