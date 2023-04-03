@@ -1,3 +1,8 @@
+import { useContext } from "react";
+import { Link } from "react-router-dom";
+import { useForm } from "../../hooks/useForm.js";
+import { AuthContext } from "../../contexts/AuthContext.js";
+
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
@@ -6,29 +11,56 @@ import Row from "react-bootstrap/Row";
 import styles from "./Register.module.css";
 
 export const Register = () => {
+  const { onRegisterSubmit } = useContext(AuthContext);
+  const { values, changeHandler, onSubmit } = useForm(
+    {
+      email: "",
+      password: "",
+      confirmPassword: "",
+    },
+    onRegisterSubmit
+  );
   return (
     <div className={styles.registerForm}>
       <h1 className={styles.title}>Register</h1>
       <h5 className={styles.secondTitle}>
         Please fill in this form to create an account.
       </h5>
-      <Form className={styles.form}>
-        <Form.Group className="mb-3" controlId="formBasicEmail">
+      <Form className={styles.form} method="POST" onSubmit={onSubmit}>
+        <Form.Group className="mb-3">
           <Form.Label>Email address</Form.Label>
-          <Form.Control type="email" placeholder="Enter email" />
+          <Form.Control
+            type="email"
+            name="email"
+            placeholder="Enter email"
+            value={values.email}
+            onChange={changeHandler}
+          />
           <Form.Text className="text-muted">
             Please enter a valid email.
           </Form.Text>
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formBasicPassword">
+        <Form.Group className="mb-3">
           <Form.Label>Password</Form.Label>
-          <Form.Control type="password" placeholder="Password" />
+          <Form.Control
+            type="password"
+            name="password"
+            placeholder="Password"
+            value={values.password}
+            onChange={changeHandler}
+          />
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formBasicPassword">
+        <Form.Group className="mb-3">
           <Form.Label> Repeat Password</Form.Label>
-          <Form.Control type="repassword" placeholder="Repeat your password." />
+          <Form.Control
+            type="password"
+            name="confirmPassword"
+            placeholder="Repeat your password."
+            value={values.confirmPassword}
+            onChange={changeHandler}
+          />
         </Form.Group>
 
         <Form.Group

@@ -26,7 +26,7 @@ export const Login = () => {
       <h1 className={styles.title}>Login</h1>
       <h5 className={styles.secondTitle}>Please enter your credentials.</h5>
       <Form className={styles.form} method="POST" onSubmit={onSubmit}>
-        <Form.Group className="mb-3" controlId="formBasicEmail">
+        <Form.Group className="mb-3">
           <Form.Label>Email address</Form.Label>
           <Form.Control
             type="email"
@@ -40,7 +40,7 @@ export const Login = () => {
           </Form.Text>
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formBasicPassword">
+        <Form.Group className="mb-3">
           <Form.Label>Password</Form.Label>
           <Form.Control
             type="password"
@@ -51,11 +51,7 @@ export const Login = () => {
           />
         </Form.Group>
 
-        <Form.Group
-          as={Row}
-          className={styles.check}
-          controlId="formHorizontalCheck"
-        >
+        <Form.Group as={Row} className={styles.check}>
           <Col sm={{ span: 10, offset: 2 }}>
             <Form.Check label="Remember me" />
           </Col>
