@@ -1020,82 +1020,12 @@ button {
 
 /** footer **/
 
-.footer {
-    
-    background: #2d2d2d;
-    text-align: center;
-    font-weight: bolder;
-    text-align: center;
-    padding: 1.3rem;
-    bottom: 0;
-    left: 0;
-    width: auto;
 
-}
 
 /** end footer **/
 
 
-#footerP {
-    color: #fdc001;
-    font-size: 18px;
-    line-height: 23px;
-    font-weight: bold;
-    margin-bottom: auto;
-    padding-bottom: auto;
-}
 
-.home-content {
-    display: flex;
-    justify-content: flex-start;
-    height: 520px;
-    border-radius: 50%/ 0 0 40px 40px;
-  }
-  
-  .home-content-text {
-    display: inline-flex;
-    width: 350px;
-    margin-left: 10%;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    position: relative;
-    left: 50px;
-    
-  }
-  
-  .home-content-text h1 {
-    font-size: 60px;
-    margin: 10px;
-    color: #fdc001;
-    font-weight: 400;
-  }
-  
-  .home-content-text p {
-    color: #910a0a;
-    font-size: 20px;
-    font-weight: bold;
-    margin-top: 2rem;
-  }
-  
-  h1.bold-home {
-    font-weight: 800;
-  }
-  
-  .home-content-image {
-    width: 800px;
-    position: relative;
-    top: 64px;
-    right: 80px;
-  }
-  
-  .home-content-image img {
-    width: 100%;
-    opacity: 100%;
-    margin-bottom: 50px;
-    padding-bottom: 60px;
-    padding-left: 20rem;
-  }
 
   
 /* ==========================================================================
