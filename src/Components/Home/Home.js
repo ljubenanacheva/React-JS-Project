@@ -8,7 +8,7 @@ export const Home = () => {
           <p>You have seen an interesting place. Show it to us...</p>
         </article>
         <article class="home-content-image">
-          <img src="./images/phonemap.jpg" alt="dog" />
+          <img src="./images/phonemap.jpg" alt="landmark photo" />
         </article>
       </section>
     </>
