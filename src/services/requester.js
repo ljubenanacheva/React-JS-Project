@@ -10,12 +10,14 @@ const request = async (method, token, url, data) => {
       options.body = JSON.stringify(data);
     }
   }
+
   if (token) {
     options.headers = {
       ...options.headers,
       "X-Authorization": token,
     };
   }
+
   const response = await fetch(url, options);
   if (response.status === 204) {
     return {};

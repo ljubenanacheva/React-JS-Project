@@ -10,19 +10,41 @@ export const AuthProvider = ({ children }) => {
   const [auth, setAuth] = useLocalStorage("auth", {});
   const navigate = useNavigate();
   const authService = authServiceFactory(auth.accessToken);
+
   const onLoginSubmit = async (data) => {
     try {
       const result = await authService.login(data);
+      console.log(result);
       setAuth(result);
       navigate("/catalog");
     } catch (err) {
       console.log(err);
     }
   };
+
+  const onRegisterSubmit = async (values) => {
+    const { confirmPassword, ...registerData } = values;
+
+    if (confirmPassword !== registerData.password) {
+      return;
+    }
+    try {
+      const result = await authService.register(registerData);
+      setAuth(result);
+      navigate("/catalog");
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const onLogout = async () => {
+    // await authService.logout();
+    setAuth({});
+  };
   const context = {
     onLoginSubmit,
-    //onRegisterSubmit,
-    //onLogout,
+    onRegisterSubmit,
+    onLogout,
     userId: auth._id,
     token: auth.accessToken,
     userEmail: auth.email,
