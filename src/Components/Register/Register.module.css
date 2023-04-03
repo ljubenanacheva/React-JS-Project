@@ -1,0 +1,53 @@
+  .registerForm {
+    background-image: url('../../../public/images/formBackground.jpg');
+    opacity: 90%;
+    width: 600px;
+    display: block;
+    align-items: center;
+    border: solid rgb(107, 104, 104) 4px;
+    border-radius: 30px;
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-top: 10%;
+    margin-bottom: 5%;
+  }
+  .form{
+    width: 500px;
+    display: block;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 10%;
+    margin-left: 40px;
+  }
+  .title{
+    color: #fdc001;
+  font-weight: bold;
+  font-size: 60px;
+  margin-top: 20px;
+  margin-left: auto;
+    text-align: center;
+  }
+  .secondTitle{
+    color: #fdc001;
+    font-size: 20px;
+    margin-top: 4px;
+    margin-left: auto;
+    text-align: center;
+  }
+  .button{
+    background-color: #fdc001;
+    border: #fd7201;
+    box-shadow: 0px 0px 2px 2px rgb(243, 121, 22);
+    width: 80px;
+  }
+  .button:hover {
+    background-color:#f86605;
+    transition: 0.7s;
+}
+.loginLink{
+  color: #fdc001;
+}
+.loginLink:hover{
+  color: #f38f0b;
+}
