@@ -51,3 +51,8 @@
 .registerLink:hover{
   color: #f38f0b;
 }
+.check{
+  margin-right: 60px;
+  margin-bottom: 10px;
+    text-align: center;
+}

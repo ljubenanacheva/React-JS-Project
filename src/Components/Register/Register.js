@@ -1,5 +1,7 @@
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
 
 import styles from "./Register.module.css";
 
@@ -29,7 +31,17 @@ export const Register = () => {
           <Form.Control type="repassword" placeholder="Repeat your password." />
         </Form.Group>
 
-        <p class="field">
+        <Form.Group
+          as={Row}
+          className={styles.check}
+          controlId="formHorizontalCheck"
+        >
+          <Col sm={{ span: 10, offset: 2 }}>
+            <Form.Check label="Remember me" />
+          </Col>
+        </Form.Group>
+
+        <p className="field">
           <span>
             Already have an account?{" "}
             <a href="#" className={styles.loginLink}>

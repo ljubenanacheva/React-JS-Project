@@ -1,5 +1,7 @@
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
 
 import styles from "./Login.module.css";
 
@@ -22,7 +24,17 @@ export const Login = () => {
           <Form.Control type="password" placeholder="Password" />
         </Form.Group>
 
-        <p class="field">
+        <Form.Group
+          as={Row}
+          className={styles.check}
+          controlId="formHorizontalCheck"
+        >
+          <Col sm={{ span: 10, offset: 2 }}>
+            <Form.Check label="Remember me" />
+          </Col>
+        </Form.Group>
+
+        <p className="field">
           <span>
             Don't have an account?{" "}
             <a href="#" className={styles.registerLink}>
