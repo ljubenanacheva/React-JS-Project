@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export const Header = () => {
   return (
     <header className="header-area">
@@ -5,7 +7,7 @@ export const Header = () => {
         <div className="row d_flex">
           <div className=" col-md-3 col-sm-3">
             <div className="logo">
-              <a href="index.html">Landmarks of Bulgaria</a>
+              <Link to="/">Landmarks of Bulgaria</Link>
             </div>
           </div>
           <div className="col-md-9 col-sm-9">
@@ -13,24 +15,24 @@ export const Header = () => {
               <nav className="site-navbar">
                 <ul>
                   <li>
-                    <a className="active" href="index.html">
+                    <Link className="active" to="/">
                       Home
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a href="about.html">Catalog</a>
+                    <Link to="/catalog">Catalog</Link>
                   </li>
                   <li>
-                    <a href="service.html">Login</a>
+                    <Link to="/login">Login</Link>
                   </li>
                   <li>
-                    <a href="blog.html">Register</a>
+                    <Link to="/register">Register</Link>
                   </li>
                   <li>
                     <a href="contact.html">Logout</a>
                   </li>
                   <li>
-                    <a href="contact.html">Create Landmark</a>
+                    <Link to="/create">Create Landmark</Link>
                   </li>
                   <li className="d_none">
                     <a href="Javascript:void(0)">

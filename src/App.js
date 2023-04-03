@@ -1,3 +1,5 @@
+import { Routes, Route, useNavigate } from "react-router-dom";
+
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import { Create } from "./Components/Create/Create.js";
@@ -11,10 +13,14 @@ function App() {
   return (
     <>
       <Header />
-      <Home />
-      <Register />
-      <Login />
-      <Create />
+      <main>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/create" element={<Create />} />
+        </Routes>
+      </main>
       <Footer />
     </>
   );
