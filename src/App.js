@@ -10,22 +10,25 @@ import { Register } from "./Components/Register/Register.js";
 import { Login } from "./Components/Login/Login.js";
 import { Edit } from "./Components/Edit/Edit.js";
 import { ErrorPage } from "./Components/ErrorPage/ErrorPage.js";
+import { AuthProvider } from "./contexts/AuthContext.js";
 
 function App() {
   return (
     <>
-      <Header />
-      <main>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/create" element={<Create />} />
-          <Route path="/catalog/:landMarkId/edit" element={<Edit />} />
-          <Route path="*" element={<ErrorPage />} />
-        </Routes>
-      </main>
-      <Footer />
+      <AuthProvider>
+        <Header />
+        <main>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/create" element={<Create />} />
+            <Route path="/catalog/:landMarkId/edit" element={<Edit />} />
+            <Route path="*" element={<ErrorPage />} />
+          </Routes>
+        </main>
+        <Footer />
+      </AuthProvider>
     </>
   );
 }
