@@ -8,6 +8,7 @@ import { Header } from "./Components/Header/Header.js";
 import { Home } from "./Components/Home/Home.js";
 import { Register } from "./Components/Register/Register.js";
 import { Login } from "./Components/Login/Login.js";
+import { Edit } from "./Components/Edit/Edit.js";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/create" element={<Create />} />
+          <Route path="/catalog/:landMarkId/edit" element={<Edit />} />
         </Routes>
       </main>
       <Footer />
