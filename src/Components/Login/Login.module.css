@@ -1,8 +1,10 @@
   .loginForm {
+    background-image: url('../../../public/images/formBackground.jpg');
+    opacity: 90%;
     width: 600px;
     display: block;
     align-items: center;
-    border: solid darkgrey 4px;
+    border: solid rgb(107, 104, 104) 4px;
     border-radius: 30px;
     margin-left: 30%;
     margin-right: 30%;
@@ -42,4 +44,10 @@
   .button:hover {
     background-color:#f86605;
     transition: 0.7s;
+}
+.registerLink{
+  color: #fdc001;
+}
+.registerLink:hover{
+  color: #f38f0b;
 }

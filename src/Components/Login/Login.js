@@ -24,7 +24,10 @@ export const Login = () => {
 
         <p class="field">
           <span>
-            Don't have an account? <a href="#">Register</a>
+            Don't have an account?{" "}
+            <a href="#" className={styles.registerLink}>
+              Register
+            </a>
           </span>
         </p>
 
