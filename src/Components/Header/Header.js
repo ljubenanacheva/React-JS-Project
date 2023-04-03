@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthContext.js";
+import { useContext } from "react";
 
 export const Header = () => {
+  const { isAuthenticated, userEmail } = useContext(AuthContext);
   return (
     <header className="header-area">
       <div className="container">
@@ -22,23 +25,33 @@ export const Header = () => {
                   <li>
                     <Link to="/catalog">Catalog</Link>
                   </li>
-                  <li>
-                    <Link to="/login">Login</Link>
-                  </li>
-                  <li>
-                    <Link to="/register">Register</Link>
-                  </li>
-                  <li>
-                    <a href="contact.html">Logout</a>
-                  </li>
-                  <li>
-                    <Link to="/create">Create Landmark</Link>
-                  </li>
-                  <li className="d_none">
-                    <a href="Javascript:void(0)">
-                      <i className="fa fa-user" aria-hidden="true"></i>
-                    </a>
-                  </li>
+                  {!isAuthenticated && (
+                    <>
+                      <li>
+                        <Link to="/login">Login</Link>
+                      </li>
+                      <li>
+                        <Link to="/register">Register</Link>
+                      </li>
+                    </>
+                  )}
+                  {isAuthenticated && (
+                    <>
+                      <li>
+                        <Link to="/create">Create Landmark</Link>
+                      </li>
+                      <li>
+                        <Link to="/logout">Logout</Link>
+                      </li>
+                      <li className="d_none">
+                        <a href="Javascript:void(0)">
+                          <i className="fa fa-user" aria-hidden="true"></i>
+                        </a>
+                        <span>{userEmail}</span>
+                      </li>
+                    </>
+                  )}
+                  ;
                   <li className="d_none">
                     <a href="Javascript:void(0)">
                       <i className="fa fa-search" aria-hidden="true"></i>

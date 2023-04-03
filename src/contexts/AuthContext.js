@@ -14,7 +14,6 @@ export const AuthProvider = ({ children }) => {
   const onLoginSubmit = async (data) => {
     try {
       const result = await authService.login(data);
-      console.log(result);
       setAuth(result);
       navigate("/catalog");
     } catch (err) {
@@ -38,7 +37,8 @@ export const AuthProvider = ({ children }) => {
   };
 
   const onLogout = async () => {
-    // await authService.logout();
+    await authService.logout();
+    localStorage.clear();
     setAuth({});
   };
   const context = {
