@@ -8,6 +8,7 @@ import { Header } from "./Components/Header/Header.js";
 import { Home } from "./Components/Home/Home.js";
 import { Register } from "./Components/Register/Register.js";
 import { Login } from "./Components/Login/Login.js";
+import { Logout } from "./Components/Logout/Logout.js";
 import { Edit } from "./Components/Edit/Edit.js";
 import { ErrorPage } from "./Components/ErrorPage/ErrorPage.js";
 import { AuthProvider } from "./contexts/AuthContext.js";
@@ -23,6 +24,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/logout" element={<Logout />} />
             <Route path="/create" element={<Create />} />
             <Route path="/catalog" element={<Catalog />} />
             <Route path="/catalog/:landMarkId/edit" element={<Edit />} />
