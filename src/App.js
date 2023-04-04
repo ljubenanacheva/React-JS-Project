@@ -13,25 +13,28 @@ import { Edit } from "./Components/Edit/Edit.js";
 import { ErrorPage } from "./Components/ErrorPage/ErrorPage.js";
 import { AuthProvider } from "./contexts/AuthContext.js";
 import { Catalog } from "./Components/Catalog/Catalog.js";
+import { LandmarkProvider } from "./contexts/LandmarkContext.js";
 
 function App() {
   return (
     <>
       <AuthProvider>
-        <Header />
-        <main>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/logout" element={<Logout />} />
-            <Route path="/create" element={<Create />} />
-            <Route path="/catalog" element={<Catalog />} />
-            <Route path="/catalog/:landMarkId/edit" element={<Edit />} />
-            <Route path="*" element={<ErrorPage />} />
-          </Routes>
-        </main>
-        <Footer />
+        <LandmarkProvider>
+          <Header />
+          <main>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/logout" element={<Logout />} />
+              <Route path="/create" element={<Create />} />
+              <Route path="/catalog" element={<Catalog />} />
+              <Route path="/catalog/:landMarkId/edit" element={<Edit />} />
+              <Route path="*" element={<ErrorPage />} />
+            </Routes>
+          </main>
+          <Footer />
+        </LandmarkProvider>
       </AuthProvider>
     </>
   );
