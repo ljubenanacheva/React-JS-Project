@@ -1,0 +1,90 @@
+.landMarkDashboard{
+  display: flex;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+  margin-left: 20px;
+  margin-right: 20px;
+  height: 630px;
+  margin-top: 50px;
+  justify-content: center;
+}
+.landMarkDashboard::-webkit-scrollbar {
+  box-shadow: inset 0 0 5px rgb(66, 66, 66);
+  border-radius: 10px;
+}
+
+.catalogTitle{
+  text-align: center;
+  font-weight: bolder;
+  font-size: 50px;
+  color: #fdc001;
+  margin-top: 3%;
+}
+.landmarkBoard {
+  box-shadow: 6px 6px 20px #464a4e62, -6px -6px 20px #464a4e62;
+  width: 300px;
+  text-align: center;
+  border: 2px solid #f07b38;
+  background: #f7a800a2;
+  margin: 0px 10px;
+  padding: 20px 3px;
+  border-radius: 12px;
+}
+.landmarkImage {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  border: #ff5100 solid 2px;
+}
+.landmakH2{
+  font-size: 22px;
+  font-weight: bolder;
+  margin-top: 1%;
+  color: #c73f00;
+}
+.landmarkH3{
+  font-size: 18px;
+}
+.landmarkH5{
+  font-size: 14px;
+}
+.action {
+  display: flex;
+  text-align: center;
+}
+.btn {
+  width: 100px;
+  height: auto;
+  cursor: pointer;
+  border: none;
+  border-radius: 10px;
+  display: inline;
+  align-items: center;
+  background-color: #ff6600;
+  transition: 500ms;
+  color: black;
+  font-size: 18px;
+  font-weight: bold;
+  text-decoration: none;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  margin-bottom: 10px;
+  margin-top: 20px;
+  margin-left: 100px;
+  margin-right: 5px;
+  box-shadow: 6px 6px 20px #464a4e62, -6px -6px 20px #464a4e62;
+}
+.btn:hover{
+  box-shadow: none;
+  color: #ffffff;
+}
+.noLandmarks {
+  font-size: 26px;
+  font-weight: bolder;
+  border: rgb(189, 15, 15) solid 4px;
+  color: #ff6600;
+  padding: 30px;
+  margin-top: 10%;
+  align-items: center;
+  
+}
