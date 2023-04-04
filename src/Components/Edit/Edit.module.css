@@ -1,6 +1,7 @@
 .divForm{
     background-image: url('../../../public/images/createBackground.jpg');
     background-repeat: no-repeat;
+    background-size: cover;
     width: 700px;
     display: block;
     align-items: center;

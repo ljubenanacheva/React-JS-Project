@@ -62,6 +62,23 @@ export const Edit = () => {
 
         <Form.Group
           as={Row}
+          className="mb-3"
+          controlId="formHorizontalPassword"
+        >
+          <Form.Label column sm={2} className={styles.label}>
+            Google Maps Url
+          </Form.Label>
+          <Col sm={10}>
+            <Form.Control
+              className={styles.formField}
+              type="text"
+              placeholder="Enter Google Maps URL."
+            />
+          </Col>
+        </Form.Group>
+
+        <Form.Group
+          as={Row}
           className={styles.selectForm}
           controlId="formHorizontalPassword"
         >
