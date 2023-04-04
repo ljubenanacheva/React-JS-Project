@@ -3,7 +3,7 @@ import { AuthContext } from "../../contexts/AuthContext.js";
 import { useContext } from "react";
 
 export const Header = () => {
-  const { isAuthenticated, userEmail } = useContext(AuthContext);
+  const { isAuthenticated, username } = useContext(AuthContext);
   return (
     <header className="header-area">
       <div className="container">
@@ -47,7 +47,7 @@ export const Header = () => {
                         <a href="Javascript:void(0)">
                           <i className="fa fa-user" aria-hidden="true"></i>
                         </a>
-                        <span>{userEmail}</span>
+                        <span>{username}</span>
                       </li>
                     </>
                   )}
