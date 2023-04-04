@@ -11,6 +11,7 @@ import { Login } from "./Components/Login/Login.js";
 import { Edit } from "./Components/Edit/Edit.js";
 import { ErrorPage } from "./Components/ErrorPage/ErrorPage.js";
 import { AuthProvider } from "./contexts/AuthContext.js";
+import { Catalog } from "./Components/Catalog/Catalog.js";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
             <Route path="/create" element={<Create />} />
+            <Route path="/catalog" element={<Catalog />} />
             <Route path="/catalog/:landMarkId/edit" element={<Edit />} />
             <Route path="*" element={<ErrorPage />} />
           </Routes>
