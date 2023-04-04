@@ -35,9 +35,6 @@ export const Home = () => {
             />
           </Carousel.Item>
         </Carousel>
-        {/* <article className={styles.homeContentImage}>
-          <img src="./images/phonemap.jpg" alt="landmark photo" />
-        </article> */}
       </section>
     </>
   );
