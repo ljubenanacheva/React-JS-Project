@@ -14,6 +14,7 @@ import { ErrorPage } from "./Components/ErrorPage/ErrorPage.js";
 import { AuthProvider } from "./contexts/AuthContext.js";
 import { Catalog } from "./Components/Catalog/Catalog.js";
 import { LandmarkProvider } from "./contexts/LandmarkContext.js";
+import { Details } from "./Components/Details/Details.js";
 
 function App() {
   return (
@@ -29,7 +30,8 @@ function App() {
               <Route path="/logout" element={<Logout />} />
               <Route path="/create" element={<Create />} />
               <Route path="/catalog" element={<Catalog />} />
-              <Route path="/catalog/:landMarkId/edit" element={<Edit />} />
+              <Route path="/catalog/:landmarkId" element={<Details />} />
+              <Route path="/catalog/:landmarkId/edit" element={<Edit />} />
               <Route path="*" element={<ErrorPage />} />
             </Routes>
           </main>
