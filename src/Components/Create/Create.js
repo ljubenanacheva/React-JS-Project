@@ -3,31 +3,72 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 
+import { useState } from "react";
 import { useLandmarkContext } from "../../contexts/LandmarkContext.js";
 import { useForm } from "../../hooks/useForm.js";
 
 import styles from "./Create.module.css";
+import { ErrorBox } from "../common/ErrorBox.js";
 
 export const Create = () => {
   const { onCreateLandmarkSubmit } = useLandmarkContext();
-  const { values, changeHandler, onSubmit } = useForm(
-    {
+  const [values, setValues] = useState({
+    name: "",
+    location: "",
+    imageUrl: "",
+    category: "",
+    descrition: "",
+  });
+
+  const [error, setError] = useState([]);
+  const [message, setMessage] = useState("");
+  const changeHandler = (e) => {
+    setValues((state) => ({ ...state, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (values.name == "") {
+      setError((olderror) => [...olderror, "The name is required!"]);
+      event.stopPropagation();
+    }
+    if (values.location == "") {
+      setError((olderror) => [...olderror, "The location is required!"]);
+      event.stopPropagation();
+    }
+    if (values.imageUrl == "") {
+      setError((olderror) => [...olderror, "The Image Url is required!"]);
+      event.stopPropagation();
+    }
+    if (values.description == "") {
+      setError((olderror) => [...olderror, "The Description is required!"]);
+      event.stopPropagation();
+      return;
+    }
+
+    onCreateLandmarkSubmit(values);
+    setValues({
       name: "",
       location: "",
       imageUrl: "",
       category: "",
-      description: "",
-    },
-    onCreateLandmarkSubmit
-  );
+      descrition: "",
+    });
+  };
+
   return (
     <div className={styles.divForm}>
       <h1 className={styles.title}>Create a Landmark</h1>
       <div>
         <img src=".\images\landmark.png" className={styles.image} />
       </div>
-      <Form className={styles.form} method="POST" onSubmit={onSubmit}>
-        <Form.Group as={Row} className="mb-3" controlId="formHorizontalEmail">
+      {error.length > 0 && <ErrorBox message={error.join(" ")} />}
+      <Form className={styles.form} method="POST" onSubmit={handleSubmit}>
+        <Form.Group
+          as={Row}
+          className="mb-3"
+          controlId="validationCustomUsername"
+        >
           <Form.Label column sm={2} className={styles.label}>
             Name
           </Form.Label>
