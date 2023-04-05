@@ -10,7 +10,7 @@ export const Edit = () => {
     <div className={styles.divForm}>
       <h1 className={styles.title}>Edit a Landmark</h1>
       <div>
-        <img src=".\images\landmark.png" className={styles.image} />
+        <img src="\images\landmark.png" className={styles.image} />
       </div>
       <Form className={styles.form}>
         <Form.Group as={Row} className="mb-3" controlId="formHorizontalEmail">
@@ -56,23 +56,6 @@ export const Edit = () => {
               className={styles.formField}
               type="text"
               placeholder="Image Url"
-            />
-          </Col>
-        </Form.Group>
-
-        <Form.Group
-          as={Row}
-          className="mb-3"
-          controlId="formHorizontalPassword"
-        >
-          <Form.Label column sm={2} className={styles.label}>
-            Google Maps Url
-          </Form.Label>
-          <Col sm={10}>
-            <Form.Control
-              className={styles.formField}
-              type="text"
-              placeholder="Enter Google Maps URL."
             />
           </Col>
         </Form.Group>

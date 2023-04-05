@@ -15,7 +15,6 @@ export const Create = () => {
       name: "",
       location: "",
       imageUrl: "",
-      mapUrl: "",
       category: "",
       description: "",
     },
@@ -79,26 +78,6 @@ export const Create = () => {
               name="imageUrl"
               placeholder="Image Url"
               value={values.imageUrl}
-              onChange={changeHandler}
-            />
-          </Col>
-        </Form.Group>
-
-        <Form.Group
-          as={Row}
-          className="mb-3"
-          controlId="formHorizontalPassword"
-        >
-          <Form.Label column sm={2} className={styles.label}>
-            Google Maps Url
-          </Form.Label>
-          <Col sm={10}>
-            <Form.Control
-              className={styles.formField}
-              name="mapUrl"
-              type="text"
-              placeholder="Enter Google Maps URL."
-              value={values.mapUrl}
               onChange={changeHandler}
             />
           </Col>

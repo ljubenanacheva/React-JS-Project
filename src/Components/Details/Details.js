@@ -55,7 +55,7 @@ export const Details = () => {
           </div>
           {landmark._ownerId === userId && (
             <div className={styles.actionBtn}>
-              <Link to="#" className={styles.btn}>
+              <Link to={`/catalog/${landmark._id}/edit`} className={styles.btn}>
                 Edit
               </Link>
               <Link to="#" className={styles.btn}>
