@@ -5,7 +5,6 @@ import Row from "react-bootstrap/Row";
 
 import { useState } from "react";
 import { useLandmarkContext } from "../../contexts/LandmarkContext.js";
-import { useForm } from "../../hooks/useForm.js";
 
 import styles from "./Create.module.css";
 import { ErrorBox } from "../common/ErrorBox.js";
@@ -17,31 +16,32 @@ export const Create = () => {
     location: "",
     imageUrl: "",
     category: "",
-    descrition: "",
+    description: "",
   });
 
-  const [error, setError] = useState([]);
-  const [message, setMessage] = useState("");
+  const [error, setError] = useState("");
   const changeHandler = (e) => {
     setValues((state) => ({ ...state, [e.target.name]: e.target.value }));
   };
-
   const handleSubmit = (event) => {
     event.preventDefault();
     if (values.name == "") {
-      setError((olderror) => [...olderror, "The name is required!"]);
+      setError("The name is required!");
       event.stopPropagation();
+      return;
     }
     if (values.location == "") {
-      setError((olderror) => [...olderror, "The location is required!"]);
+      setError("The location is required!");
       event.stopPropagation();
+      return;
     }
     if (values.imageUrl == "") {
-      setError((olderror) => [...olderror, "The Image Url is required!"]);
+      setError("The Image Url is required!");
       event.stopPropagation();
+      return;
     }
     if (values.description == "") {
-      setError((olderror) => [...olderror, "The Description is required!"]);
+      setError("The Description is required!");
       event.stopPropagation();
       return;
     }
@@ -62,7 +62,7 @@ export const Create = () => {
       <div>
         <img src=".\images\landmark.png" className={styles.image} />
       </div>
-      {error.length > 0 && <ErrorBox message={error.join(" ")} />}
+      {error.length > 0 && <ErrorBox message={error} />}
       <Form className={styles.form} method="POST" onSubmit={handleSubmit}>
         <Form.Group
           as={Row}
