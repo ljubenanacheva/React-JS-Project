@@ -114,6 +114,11 @@ export const Edit = () => {
             <option>Wonders of Nature</option>
             <option>Architecture</option>
             <option>Historical Places</option>
+            <option>Monasteries and churches</option>
+            <option>Lakes</option>
+            <option>Rivers</option>
+            <option>Caves</option>
+            <option>Peaks</option>
           </Form.Select>
           <br />
         </Form.Group>

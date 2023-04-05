@@ -79,12 +79,6 @@ export const Details = () => {
     <>
       <div className={styles.details}>
         <h1 className={styles.name}>Name: {landmark.name}</h1>
-        {dialog.isLoading && (
-          <DeleteConfirmation
-            message={dialog.message}
-            onDialog={areYouSureDelete}
-          />
-        )}
         <h3 className={styles.category}>Category: {landmark.category}</h3>
         <section className={styles.images}>
           <div className="animalPic">
@@ -96,6 +90,12 @@ export const Details = () => {
           <p className={styles.description}>
             Description: {landmark.description}
           </p>
+          {dialog.isLoading && (
+            <DeleteConfirmation
+              message={dialog.message}
+              onDialog={areYouSureDelete}
+            />
+          )}
           <h6 className={styles.mapTitle}>You could search the place here.</h6>
           <div className={styles.locationDiv}>
             <div className={styles.map}>

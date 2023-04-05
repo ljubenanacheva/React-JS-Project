@@ -43,10 +43,30 @@
   color: #c73f00;
 }
 .landmarkH3{
-  font-size: 18px;
+  text-align: center;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+font-size: 20px;
+letter-spacing: 0.8px;
+word-spacing: 2px;
+color: #2B2B2B;
+font-weight: 700;
+text-decoration: none;
+font-style: normal;
+font-variant: normal;
+text-transform: none;
 }
 .landmarkH5{
-  font-size: 14px;
+  text-align: center;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+font-size: 15px;
+letter-spacing: 0.8px;
+word-spacing: 2px;
+color: #2B2B2B;
+font-weight: 700;
+text-decoration: none;
+font-style: normal;
+font-variant: normal;
+text-transform: none;
 }
 .action {
   display: flex;
