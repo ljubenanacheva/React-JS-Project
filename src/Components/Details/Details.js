@@ -35,9 +35,9 @@ export const Details = () => {
           </div>
         </section>
         <div>
-          <h4 className={styles.location}>Location: Varna</h4>
+          <h4 className={styles.location}>Location: {landmark.location}</h4>
           <p className={styles.description}>
-            Description: Very intersting place...
+            Description: {landmark.description}
           </p>
           <h6 className={styles.mapTitle}>You could search the place here.</h6>
           <div className={styles.locationDiv}>

@@ -22,10 +22,18 @@ export const LandmarkProvider = ({ children }) => {
     setLandmarks((state) => [...state, newLandmark]);
     navigate("/catalog");
   };
+  const onLandmarkEditSubmit = async (values) => {
+    const editedLandmark = await landmarkService.edit(values._id, values);
+    setLandmarks((state) =>
+      state.map((x) => (x._id === values._id ? editedLandmark : x))
+    );
+    navigate(`/catalog/${values._id}`);
+  };
 
   const contextValues = {
     landmarks,
     onCreateLandmarkSubmit,
+    onLandmarkEditSubmit,
   };
 
   return (

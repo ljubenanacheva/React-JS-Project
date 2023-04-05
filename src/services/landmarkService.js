@@ -18,11 +18,13 @@ export const landmarkServiceFactory = (token) => {
     const result = await request.get(`${baseUrl}/${landmarkId}`);
     return result;
   };
+  const edit = (landmarkId, data) =>
+    request.put(`${baseUrl}/${landmarkId}`, data);
   return {
     getAll,
     getOne,
     create,
-    //edit,
+    edit,
     //delete: deleteOne,
   };
 };
