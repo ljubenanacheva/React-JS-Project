@@ -8,11 +8,13 @@ import { useLandmarkContext } from "../../contexts/LandmarkContext.js";
 import { useService } from "../../hooks/useService.js";
 import { Button } from "react-bootstrap";
 import { DeleteConfirmation } from "../DeleteConfirmation/DeleteConfirmation.js";
+import { AddComment } from "./AddComment/AddComment.js";
+import * as commentService from "../../services/commentService.js";
 
 export const Details = () => {
-  const { userId, isAuthenticated } = useContext(AuthContext);
-  const { deleteLandmark } = useLandmarkContext();
+  const { userId, isAuthenticated, username } = useContext(AuthContext);
   const { landmarkId } = useParams();
+  const { deleteLandmark } = useLandmarkContext();
   const [landmark, setLandmark] = useState({});
 
   const [dialog, setDialog] = useState({
@@ -25,8 +27,14 @@ export const Details = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    landmarkService.getOne(landmarkId).then((landmarkData) => {
-      setLandmark(landmarkData);
+    Promise.all([
+      landmarkService.getOne(landmarkId),
+      commentService.getAll(landmarkId),
+    ]).then(([landmarkData, commentsData]) => {
+      setLandmark({
+        ...landmarkData,
+        comments: commentsData,
+      });
     });
   }, [landmarkId]);
 
@@ -51,6 +59,22 @@ export const Details = () => {
       handleDialog("", false);
     }
   };
+  const onCommentSubmit = async (values) => {
+    const result = await commentService.create(landmarkId, values.comment);
+    setLandmark((state) => ({
+      ...state,
+      comments: [
+        ...state.comments,
+        {
+          ...result,
+          author: {
+            username: username,
+          },
+        },
+      ],
+    }));
+  };
+
   return (
     <>
       <div className={styles.details}>
@@ -80,9 +104,9 @@ export const Details = () => {
                 width="516"
                 height="366"
                 style={{ border: "0" }}
-                allowfullscreen=""
+                allowFullScreen=""
                 loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
+                referrerPolicy="no-referrer-when-downgrade"
               ></iframe>
             </div>
           </div>
@@ -101,32 +125,23 @@ export const Details = () => {
               <div className={styles.commentsDiv}>
                 <h2 className={styles.commentsTitle}>Comments:</h2>
                 <ul>
-                  {/*<!-- list all comments for current game (If any) -->*/}
-                  <li className={styles.commentLi}>
-                    <p>Content: I rate this one quite highly.</p>
-                  </li>
-                  <li className="comment">
-                    <p>Content: The best game.</p>
-                  </li>
+                  {landmark.comments &&
+                    landmark.comments.map((x) => (
+                      <li key={x._id} className={styles.commentLi}>
+                        <p>
+                          {x.author.username}: {x.comment}
+                        </p>
+                      </li>
+                    ))}
                 </ul>
-                {/*<!-- Display paragraph: If there are no games in the database -->*/}
-                <p className={styles.commentLi}>No comments.</p>
+                {landmark.comments && landmark.comments.length === 0 && (
+                  <p className={styles.commentLi}>No comments.</p>
+                )}
               </div>
-              <article className={styles.createComment}>
-                <label className={styles.addcommentsTitle}>
-                  Add new comment:
-                </label>
-                <form className="form">
-                  <textarea
-                    className={styles.commentTextarea}
-                    name="comment"
-                    placeholder="Comment......"
-                  ></textarea>
-                  <button className={styles.addCommentBtn} type="submit">
-                    Add comment
-                  </button>
-                </form>
-              </article>
+
+              {isAuthenticated && (
+                <AddComment onCommentSubmit={onCommentSubmit} />
+              )}
             </>
           )}
         </div>
