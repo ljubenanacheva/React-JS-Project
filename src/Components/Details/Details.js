@@ -1,25 +1,37 @@
 import styles from "./Details.module.css";
 
+import { useEffect, useState, useContext } from "react";
+import { useParams, useNavigate, Link } from "react-router-dom";
+
+import { landmarkServiceFactory } from "../../services/landmarkService.js";
+import { AuthContext } from "../../contexts/AuthContext.js";
+import { useLandmarkContext } from "../../contexts/LandmarkContext.js";
+import { useService } from "../../hooks/useService.js";
+
 export const Details = () => {
+  const { userId, isAuthenticated } = useContext(AuthContext);
+
+  const { landmarkId } = useParams();
+  const [landmark, setLandmark] = useState({});
+
+  const landmarkService = useService(landmarkServiceFactory);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    landmarkService.getOne(landmarkId).then((landmarkData) => {
+      setLandmark(landmarkData);
+    });
+  }, [landmarkId]);
+
   return (
     <>
       <div className={styles.details}>
-        <h1 className={styles.name}>Name: Kaliakra Cape</h1>
-        <h3 className={styles.category}>Category: Nature</h3>
+        <h1 className={styles.name}>Name: {landmark.name}</h1>
+        <h3 className={styles.category}>Category: {landmark.category}</h3>
         <section className={styles.images}>
           <div className="animalPic">
-            <img className={styles.img} src="/images/kaliakra.jpg" />
-          </div>
-          <div className={styles.map}>
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11802.202065189955!2d27.754781679876636!3d42.309455488176106!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40a6cc14cc840ed5%3A0xefb61d9214cebeb!2sBeglik%20Tash!5e0!3m2!1sen!2sbg!4v1680551829009!5m2!1sen!2sbg"
-              width="516"
-              height="366"
-              style={{ border: "0" }}
-              allowfullscreen=""
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-            ></iframe>
+            <img className={styles.img} src={landmark.imageUrl} />
           </div>
         </section>
         <div>
@@ -27,7 +39,20 @@ export const Details = () => {
           <p className={styles.description}>
             Description: Very intersting place...
           </p>
-
+          <h6 className={styles.mapTitle}>You could search the place here.</h6>
+          <div className={styles.locationDiv}>
+            <div className={styles.map}>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1500843.2714622791!2d24.224396525279392!3d42.71781001236415!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40a8fec1c85bf089%3A0xa01269bf4c10!2sBulgaria!5e0!3m2!1sen!2sbg!4v1680690901569!5m2!1sen!2sbg"
+                width="516"
+                height="366"
+                style={{ border: "0" }}
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+          </div>
           {/*<!-- if there is no registered user, do not display div-->*/}
           <div className={styles.actionBtn}>
             {/*<!-- Only for registered user and creator of the pets-->*/}

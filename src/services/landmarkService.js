@@ -14,9 +14,13 @@ export const landmarkServiceFactory = (token) => {
 
     return result;
   };
+  const getOne = async (landmarkId) => {
+    const result = await request.get(`${baseUrl}/${landmarkId}`);
+    return result;
+  };
   return {
     getAll,
-    //getOne,
+    getOne,
     create,
     //edit,
     //delete: deleteOne,

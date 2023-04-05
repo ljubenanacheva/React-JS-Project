@@ -6,15 +6,16 @@
 }
 .img{
     width: 500px;
-    margin: 5%;
-    margin-left: 400px;
+    margin: 2%;
+    margin-left: 800px;
     border: #fcab16 solid 3px;
     box-shadow: 5px 5px 15px 5px #000000;
 }
 .map{
     width: 500px;
-    margin-top: 35px;
-    margin-left: 200px;
+    margin-top: 15px;
+    margin-right: 0px;
+    margin-bottom: 20px;
     border: #fcab16 solid 3px;
     width:524px;
     height: 372px;
@@ -154,7 +155,7 @@ text-transform: none;
     .commentTextarea{
         width: 1200px;
         margin: 2%;
-        margin-left: 390px;
+        margin-left: 460px;
         padding: 5px;
      font-size: 16px;
      border-width: 1px;
@@ -180,4 +181,25 @@ text-decoration: underline solid rgb(68, 68, 68);
 font-style: italic;
 font-variant: small-caps;
 text-transform: none;
+}
+
+.locationDiv{
+    display: flex;
+    justify-content: center;
+}
+.mapTitle{
+    text-align: center;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+font-size: 20px;
+letter-spacing: 0.8px;
+word-spacing: 2px;
+color: #e4860c;
+font-weight: 700;
+text-decoration: none;
+font-style: normal;
+font-variant: normal;
+text-transform: none;
+display: block;
+margin-top: 30px;
+margin-bottom: 0px;
 }
