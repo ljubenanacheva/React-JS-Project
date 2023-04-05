@@ -29,7 +29,7 @@ export const Details = () => {
           </p>
 
           {/*<!-- if there is no registered user, do not display div-->*/}
-          <div className="actionBtn">
+          <div className={styles.actionBtn}>
             {/*<!-- Only for registered user and creator of the pets-->*/}
             <a href="#" className={styles.btn}>
               Edit
@@ -58,7 +58,9 @@ export const Details = () => {
           <label>Add new comment:</label>
           <form className="form">
             <textarea name="comment" placeholder="Comment......"></textarea>
-            <input className="btn submit" type="submit" value="Add Comment" />
+            <button className={styles.btn} type="submit">
+              Add comment
+            </button>
           </form>
         </article>
       </div>
