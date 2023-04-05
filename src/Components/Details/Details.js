@@ -1,5 +1,4 @@
 import styles from "./Details.module.css";
-
 import { useEffect, useState, useContext } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 
@@ -7,12 +6,19 @@ import { landmarkServiceFactory } from "../../services/landmarkService.js";
 import { AuthContext } from "../../contexts/AuthContext.js";
 import { useLandmarkContext } from "../../contexts/LandmarkContext.js";
 import { useService } from "../../hooks/useService.js";
+import { Button } from "react-bootstrap";
+import { DeleteConfirmation } from "../DeleteConfirmation/DeleteConfirmation.js";
 
 export const Details = () => {
   const { userId, isAuthenticated } = useContext(AuthContext);
-
+  const { deleteLandmark } = useLandmarkContext();
   const { landmarkId } = useParams();
   const [landmark, setLandmark] = useState({});
+
+  const [dialog, setDialog] = useState({
+    message: "",
+    isLoading: false,
+  });
 
   const landmarkService = useService(landmarkServiceFactory);
 
@@ -24,10 +30,37 @@ export const Details = () => {
     });
   }, [landmarkId]);
 
+  const handleDialog = (message, isLoading) => {
+    setDialog({
+      message,
+      isLoading,
+    });
+  };
+  const onDeleteClick = async () => {
+    //eslint-disable-next-line no-restricted-globals
+    handleDialog(`Are you sure yoy want to delete ${landmark.name}?`, true);
+  };
+
+  const areYouSureDelete = async (choose) => {
+    if (choose) {
+      await landmarkService.delete(landmark._id);
+      deleteLandmark(landmark._id);
+      handleDialog("", false);
+      navigate("/catalog");
+    } else {
+      handleDialog("", false);
+    }
+  };
   return (
     <>
       <div className={styles.details}>
         <h1 className={styles.name}>Name: {landmark.name}</h1>
+        {dialog.isLoading && (
+          <DeleteConfirmation
+            message={dialog.message}
+            onDialog={areYouSureDelete}
+          />
+        )}
         <h3 className={styles.category}>Category: {landmark.category}</h3>
         <section className={styles.images}>
           <div className="animalPic">
@@ -58,9 +91,9 @@ export const Details = () => {
               <Link to={`/catalog/${landmark._id}/edit`} className={styles.btn}>
                 Edit
               </Link>
-              <Link to="#" className={styles.btn}>
+              <Button className={styles.btn} onClick={onDeleteClick}>
                 Delete
-              </Link>
+              </Button>
             </div>
           )}
           {isAuthenticated && (

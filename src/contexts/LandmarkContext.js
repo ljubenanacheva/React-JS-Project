@@ -30,10 +30,17 @@ export const LandmarkProvider = ({ children }) => {
     navigate(`/catalog/${values._id}`);
   };
 
+  const deleteLandmark = (landmarkId) => {
+    setLandmarks((state) =>
+      state.filter((landmark) => landmark._id !== landmarkId)
+    );
+  };
+
   const contextValues = {
     landmarks,
     onCreateLandmarkSubmit,
     onLandmarkEditSubmit,
+    deleteLandmark,
   };
 
   return (

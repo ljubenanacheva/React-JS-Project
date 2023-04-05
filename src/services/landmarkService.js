@@ -20,11 +20,15 @@ export const landmarkServiceFactory = (token) => {
   };
   const edit = (landmarkId, data) =>
     request.put(`${baseUrl}/${landmarkId}`, data);
+
+  const deleteOne = (landmarkId) => {
+    request.delete(`${baseUrl}/${landmarkId}`);
+  };
   return {
     getAll,
     getOne,
     create,
     edit,
-    //delete: deleteOne,
+    delete: deleteOne,
   };
 };
