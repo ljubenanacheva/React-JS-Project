@@ -53,45 +53,50 @@ export const Details = () => {
               ></iframe>
             </div>
           </div>
-          {/*<!-- if there is no registered user, do not display div-->*/}
-          <div className={styles.actionBtn}>
-            {/*<!-- Only for registered user and creator of the pets-->*/}
-            <a href="#" className={styles.btn}>
-              Edit
-            </a>
-            <a href="#" className={styles.btn}>
-              Delete
-            </a>
-          </div>
-
-          <div className={styles.commentsDiv}>
-            <h2 className={styles.commentsTitle}>Comments:</h2>
-            <ul>
-              {/*<!-- list all comments for current game (If any) -->*/}
-              <li className={styles.commentLi}>
-                <p>Content: I rate this one quite highly.</p>
-              </li>
-              <li className="comment">
-                <p>Content: The best game.</p>
-              </li>
-            </ul>
-            {/*<!-- Display paragraph: If there are no games in the database -->*/}
-            <p className={styles.commentLi}>No comments.</p>
-          </div>
+          {landmark._ownerId === userId && (
+            <div className={styles.actionBtn}>
+              <Link to="#" className={styles.btn}>
+                Edit
+              </Link>
+              <Link to="#" className={styles.btn}>
+                Delete
+              </Link>
+            </div>
+          )}
+          {isAuthenticated && (
+            <>
+              <div className={styles.commentsDiv}>
+                <h2 className={styles.commentsTitle}>Comments:</h2>
+                <ul>
+                  {/*<!-- list all comments for current game (If any) -->*/}
+                  <li className={styles.commentLi}>
+                    <p>Content: I rate this one quite highly.</p>
+                  </li>
+                  <li className="comment">
+                    <p>Content: The best game.</p>
+                  </li>
+                </ul>
+                {/*<!-- Display paragraph: If there are no games in the database -->*/}
+                <p className={styles.commentLi}>No comments.</p>
+              </div>
+              <article className={styles.createComment}>
+                <label className={styles.addcommentsTitle}>
+                  Add new comment:
+                </label>
+                <form className="form">
+                  <textarea
+                    className={styles.commentTextarea}
+                    name="comment"
+                    placeholder="Comment......"
+                  ></textarea>
+                  <button className={styles.addCommentBtn} type="submit">
+                    Add comment
+                  </button>
+                </form>
+              </article>
+            </>
+          )}
         </div>
-        <article className={styles.createComment}>
-          <label className={styles.addcommentsTitle}>Add new comment:</label>
-          <form className="form">
-            <textarea
-              className={styles.commentTextarea}
-              name="comment"
-              placeholder="Comment......"
-            ></textarea>
-            <button className={styles.addCommentBtn} type="submit">
-              Add comment
-            </button>
-          </form>
-        </article>
       </div>
     </>
   );
