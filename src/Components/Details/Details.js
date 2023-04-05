@@ -39,11 +39,11 @@ export const Details = () => {
             </a>
           </div>
 
-          <div className="details-comments">
-            <h2>Comments:</h2>
+          <div className={styles.commentsDiv}>
+            <h2 className={styles.commentsTitle}>Comments:</h2>
             <ul>
               {/*<!-- list all comments for current game (If any) -->*/}
-              <li className="comment">
+              <li className={styles.commentLi}>
                 <p>Content: I rate this one quite highly.</p>
               </li>
               <li className="comment">
@@ -51,14 +51,18 @@ export const Details = () => {
               </li>
             </ul>
             {/*<!-- Display paragraph: If there are no games in the database -->*/}
-            <p className="no-comment">No comments.</p>
+            <p className={styles.commentLi}>No comments.</p>
           </div>
         </div>
-        <article className="create-comment">
-          <label>Add new comment:</label>
+        <article className={styles.createComment}>
+          <label className={styles.addcommentsTitle}>Add new comment:</label>
           <form className="form">
-            <textarea name="comment" placeholder="Comment......"></textarea>
-            <button className={styles.btn} type="submit">
+            <textarea
+              className={styles.commentTextarea}
+              name="comment"
+              placeholder="Comment......"
+            ></textarea>
+            <button className={styles.addCommentBtn} type="submit">
               Add comment
             </button>
           </form>
