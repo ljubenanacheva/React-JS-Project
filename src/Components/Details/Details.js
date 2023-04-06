@@ -9,6 +9,7 @@ import { useService } from "../../hooks/useService.js";
 import { Button } from "react-bootstrap";
 import { DeleteConfirmation } from "../DeleteConfirmation/DeleteConfirmation.js";
 import { AddComment } from "./AddComment/AddComment.js";
+import { ErrorBox } from "../common/ErrorBox.js";
 import * as commentService from "../../services/commentService.js";
 
 export const Details = () => {
@@ -17,6 +18,7 @@ export const Details = () => {
   const { deleteLandmark } = useLandmarkContext();
   const [landmark, setLandmark] = useState({});
 
+  const [error, setError] = useState("");
   const [dialog, setDialog] = useState({
     message: "",
     isLoading: false,
@@ -60,7 +62,13 @@ export const Details = () => {
     }
   };
   const onCommentSubmit = async (values) => {
+    if (values.comment == "") {
+      setError("The comment field is required!");
+      return;
+    }
+    setError("");
     const result = await commentService.create(landmarkId, values.comment);
+    console.log(result);
     setLandmark((state) => ({
       ...state,
       comments: [
@@ -138,7 +146,7 @@ export const Details = () => {
                   <p className={styles.commentLi}>No comments.</p>
                 )}
               </div>
-
+              {error && <ErrorBox message={error} />}
               {isAuthenticated && (
                 <AddComment onCommentSubmit={onCommentSubmit} />
               )}
