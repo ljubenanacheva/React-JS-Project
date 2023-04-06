@@ -17,7 +17,7 @@ export const AuthProvider = ({ children }) => {
       setAuth(result);
       navigate("/catalog");
     } catch (err) {
-      console.log(err);
+      return err.message;
     }
   };
 
@@ -32,7 +32,7 @@ export const AuthProvider = ({ children }) => {
       setAuth(result);
       navigate("/catalog");
     } catch (err) {
-      console.log(err);
+      return err.message;
     }
   };
 

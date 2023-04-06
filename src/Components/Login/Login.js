@@ -3,29 +3,55 @@ import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 
 import { AuthContext } from "../../contexts/AuthContext.js";
-import { useForm } from "../../hooks/useForm.js";
+import { ErrorBox } from "../common/ErrorBox.js";
 
 import styles from "./Login.module.css";
 
 export const Login = () => {
+  const [error, setError] = useState("");
+  const [values, setValues] = useState({
+    email: "",
+    password: "",
+  });
   const { onLoginSubmit } = useContext(AuthContext);
-  const { values, changeHandler, onSubmit } = useForm(
-    {
+  const changeHandler = (e) => {
+    setValues((state) => ({ ...state, [e.target.name]: e.target.value }));
+  };
+
+  const onSubmit = async (event) => {
+    event.preventDefault();
+    if (values.email == "") {
+      setError("The email is required!");
+      event.stopPropagation();
+      return;
+    }
+    if (values.password == "") {
+      setError("The password is required!");
+      event.stopPropagation();
+      return;
+    }
+
+    const result = await onLoginSubmit(values);
+    console.log(result);
+    if (result) {
+      setError(result);
+    }
+    setValues({
       email: "",
       password: "",
-    },
-    onLoginSubmit
-  );
+    });
+  };
 
   return (
     <div className={styles.loginForm}>
       <h1 className={styles.title}>Login</h1>
       <h5 className={styles.secondTitle}>Please enter your credentials.</h5>
       <Form className={styles.form} method="POST" onSubmit={onSubmit}>
+        {error.length > 0 && <ErrorBox message={error} />}
         <Form.Group className="mb-3">
           <Form.Label>Email address</Form.Label>
           <Form.Control
