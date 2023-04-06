@@ -23,7 +23,7 @@ export const Create = () => {
   const changeHandler = (e) => {
     setValues((state) => ({ ...state, [e.target.name]: e.target.value }));
   };
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     if (values.name == "") {
       setError("The name is required!");
@@ -46,7 +46,10 @@ export const Create = () => {
       return;
     }
 
-    onCreateLandmarkSubmit(values);
+    const result = await onCreateLandmarkSubmit(values);
+    if (result) {
+      setError(result);
+    }
     setValues({
       name: "",
       location: "",

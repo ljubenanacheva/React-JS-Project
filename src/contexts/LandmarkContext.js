@@ -18,16 +18,24 @@ export const LandmarkProvider = ({ children }) => {
   }, []);
 
   const onCreateLandmarkSubmit = async (data) => {
-    const newLandmark = await landmarkService.create(data);
-    setLandmarks((state) => [...state, newLandmark]);
-    navigate("/catalog");
+    try {
+      const newLandmark = await landmarkService.create(data);
+      setLandmarks((state) => [...state, newLandmark]);
+      navigate("/catalog");
+    } catch (err) {
+      return err.message;
+    }
   };
   const onLandmarkEditSubmit = async (values) => {
-    const editedLandmark = await landmarkService.edit(values._id, values);
-    setLandmarks((state) =>
-      state.map((x) => (x._id === values._id ? editedLandmark : x))
-    );
-    navigate(`/catalog/${values._id}`);
+    try {
+      const editedLandmark = await landmarkService.edit(values._id, values);
+      setLandmarks((state) =>
+        state.map((x) => (x._id === values._id ? editedLandmark : x))
+      );
+      navigate(`/catalog/${values._id}`);
+    } catch (err) {
+      return err.message;
+    }
   };
 
   const deleteLandmark = (landmarkId) => {

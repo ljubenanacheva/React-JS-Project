@@ -36,7 +36,6 @@ export const Login = () => {
     }
 
     const result = await onLoginSubmit(values);
-    console.log(result);
     if (result) {
       setError(result);
     }
