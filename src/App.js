@@ -15,6 +15,8 @@ import { AuthProvider } from "./contexts/AuthContext.js";
 import { Catalog } from "./Components/Catalog/Catalog.js";
 import { LandmarkProvider } from "./contexts/LandmarkContext.js";
 import { Details } from "./Components/Details/Details.js";
+import { RouteGuard } from "./Components/common/guards/RouteGuard.js";
+import { RecourceGuard } from "./Components/common/guards/RecourseGuard.js";
 
 function App() {
   return (
@@ -27,11 +29,22 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/register" element={<Register />} />
               <Route path="/login" element={<Login />} />
-              <Route path="/logout" element={<Logout />} />
-              <Route path="/create" element={<Create />} />
               <Route path="/catalog" element={<Catalog />} />
               <Route path="/catalog/:landmarkId" element={<Details />} />
-              <Route path="/catalog/:landmarkId/edit" element={<Edit />} />
+
+              <Route element={<RouteGuard />}>
+                <Route path="/logout" element={<Logout />} />
+                <Route path="/create" element={<Create />} />
+                <Route
+                  path="/catalog/:landmarkId/edit"
+                  element={
+                    <RecourceGuard>
+                      <Edit />
+                    </RecourceGuard>
+                  }
+                />
+              </Route>
+
               <Route path="*" element={<ErrorPage />} />
             </Routes>
           </main>

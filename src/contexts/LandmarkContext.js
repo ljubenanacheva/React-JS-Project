@@ -43,12 +43,16 @@ export const LandmarkProvider = ({ children }) => {
       state.filter((landmark) => landmark._id !== landmarkId)
     );
   };
+  const getLandmark = (landmarkId) => {
+    return landmarks.find((landmark) => landmark._id === landmarkId);
+  };
 
   const contextValues = {
     landmarks,
     onCreateLandmarkSubmit,
     onLandmarkEditSubmit,
     deleteLandmark,
+    getLandmark,
   };
 
   return (
