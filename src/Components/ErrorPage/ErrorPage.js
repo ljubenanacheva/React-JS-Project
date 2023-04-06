@@ -1,4 +1,5 @@
 import styles from "./ErrorPage.module.css";
+import { Link } from "react-router-dom";
 
 export const ErrorPage = () => {
   return (
@@ -12,9 +13,9 @@ export const ErrorPage = () => {
         <p className={styles.notfoundP}>
           The page you are looking for is not found.
         </p>
-        <a href="#" className={styles.notfoundLink}>
+        <Link to="/" className={styles.notfoundLink}>
           home page
-        </a>
+        </Link>
       </div>
     </div>
   );

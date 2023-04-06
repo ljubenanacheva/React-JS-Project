@@ -17,30 +17,74 @@ import { LandmarkProvider } from "./contexts/LandmarkContext.js";
 import { Details } from "./Components/Details/Details.js";
 import { RouteGuard } from "./Components/common/guards/RouteGuard.js";
 import { RecourceGuard } from "./Components/common/guards/RecourseGuard.js";
+import { Wrapper } from "./Components/common/Wrapper/Wrapper.js";
 
 function App() {
   return (
     <>
       <AuthProvider>
         <LandmarkProvider>
-          <Header />
           <main>
             <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/register" element={<Register />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/catalog" element={<Catalog />} />
-              <Route path="/catalog/:landmarkId" element={<Details />} />
+              <Route
+                path="/"
+                element={
+                  <Wrapper>
+                    <Home />
+                  </Wrapper>
+                }
+              />
+              <Route
+                path="/register"
+                element={
+                  <Wrapper>
+                    <Register />
+                  </Wrapper>
+                }
+              />
+              <Route
+                path="/login"
+                element={
+                  <Wrapper>
+                    <Login />
+                  </Wrapper>
+                }
+              />
+              <Route
+                path="/catalog"
+                element={
+                  <Wrapper>
+                    <Catalog />
+                  </Wrapper>
+                }
+              />
+              <Route
+                path="/catalog/:landmarkId"
+                element={
+                  <Wrapper>
+                    <Details />
+                  </Wrapper>
+                }
+              />
 
               <Route element={<RouteGuard />}>
                 <Route path="/logout" element={<Logout />} />
-                <Route path="/create" element={<Create />} />
+                <Route
+                  path="/create"
+                  element={
+                    <Wrapper>
+                      <Create />
+                    </Wrapper>
+                  }
+                />
                 <Route
                   path="/catalog/:landmarkId/edit"
                   element={
-                    <RecourceGuard>
-                      <Edit />
-                    </RecourceGuard>
+                    <Wrapper>
+                      <RecourceGuard>
+                        <Edit />
+                      </RecourceGuard>
+                    </Wrapper>
                   }
                 />
               </Route>
@@ -48,7 +92,6 @@ function App() {
               <Route path="*" element={<ErrorPage />} />
             </Routes>
           </main>
-          <Footer />
         </LandmarkProvider>
       </AuthProvider>
     </>
