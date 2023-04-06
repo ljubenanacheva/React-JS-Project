@@ -44,7 +44,7 @@ export const Header = () => {
                         <Link to="/logout">Logout</Link>
                       </li>
                       <li className="d_none">
-                        <a href="Javascript:void(0)">
+                        <a href="#javascript">
                           <i className="fa fa-user" aria-hidden="true"></i>
                         </a>
                         <span>{username}</span>
@@ -53,7 +53,7 @@ export const Header = () => {
                   )}
                   ;
                   <li className="d_none">
-                    <a href="Javascript:void(0)">
+                    <a href="#javascript">
                       <i className="fa fa-search" aria-hidden="true"></i>
                     </a>
                   </li>

@@ -24,9 +24,6 @@ export const AuthProvider = ({ children }) => {
   const onRegisterSubmit = async (values) => {
     const { confirmPassword, ...registerData } = values;
 
-    if (confirmPassword !== registerData.password) {
-      return;
-    }
     try {
       const result = await authService.register(registerData);
       setAuth(result);

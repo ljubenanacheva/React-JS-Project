@@ -1,6 +1,5 @@
-import { useForm } from "../../../hooks/useForm.js";
-
 import styles from "../Details.module.css";
+import { useForm } from "../../../hooks/useForm.js";
 
 export const AddComment = ({ onCommentSubmit }) => {
   const { values, changeHandler, onSubmit } = useForm(
