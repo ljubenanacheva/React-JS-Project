@@ -48,7 +48,7 @@ export const Details = () => {
   };
   const onDeleteClick = async () => {
     //eslint-disable-next-line no-restricted-globals
-    handleDialog(`Are you sure yoy want to delete ${landmark.name}?`, true);
+    handleDialog(`Are you sure you want to delete ${landmark.name}?`, true);
   };
 
   const areYouSureDelete = async (choose) => {

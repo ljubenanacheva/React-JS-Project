@@ -1,0 +1,39 @@
+.modalDialog{
+    background-color: rgb(238, 115, 115);
+    border: 2px solid rgb(238, 115, 115);
+}
+.modalDialogMain{
+    border: 3px solid red;
+}
+.paragraph{
+    text-align: center;
+    font-family: "Comic Sans MS", sans-serif;
+  font-size: 20px;
+  letter-spacing: 0.8px;
+  word-spacing: 2px;
+  color: #2B2B2B;
+  font-weight: 700;
+  text-decoration: none;
+  font-style: normal;
+  font-variant: normal;
+  text-transform: none;
+}
+.modalTitle{
+    text-align: center;
+    font-family: "Comic Sans MS", sans-serif;
+  font-size: 35px;
+  letter-spacing: 0.8px;
+  word-spacing: 2px;
+  color: #2B2B2B;
+  font-weight: 700;
+  text-decoration: none;
+  font-style: normal;
+  font-variant: normal;
+  text-transform: none;
+}
+.delbtn{
+    background-color: darkred;
+}
+.delbtn:hover{
+    background-color: red;
+}

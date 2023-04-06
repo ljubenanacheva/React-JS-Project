@@ -7,7 +7,7 @@ export const Header = () => {
   return (
     <header className="header-area">
       <div className="container">
-        <div className="row d_flex">
+        <div className="row-div">
           <div className=" col-md-3 col-sm-3">
             <div className="logo">
               <Link to="/">Landmarks of Bulgaria</Link>
@@ -52,11 +52,6 @@ export const Header = () => {
                     </>
                   )}
                   ;
-                  <li className="d_none">
-                    <a href="#javascript">
-                      <i className="fa fa-search" aria-hidden="true"></i>
-                    </a>
-                  </li>
                 </ul>
                 <button className="nav-toggler">
                   <span></span>

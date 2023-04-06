@@ -1,24 +1,10 @@
-/*--------------------------------------------------------------------- 
-File Name: style.css 
----------------------------------------------------------------------*/
 
-
-/*--------------------------------------------------------------------- 
-import Fonts -
---------------------------------------------------------------------*/
 
 @import url('https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i');
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Raleway:400,500,600,700,800,900&display=swap');
 
-/*****---------------------------------------- 1) 
- 2) font-family: 'Poppins', sans-serif;
- ----------------------------------------*****/
 
-
-/*--------------------------------------------------------------------- 
-import Files 
----------------------------------------------------------------------*/
 
 @import url(normalize.css);
 @import url(icomoon.css);
@@ -34,7 +20,7 @@ basic
 }
 
 .container {
-    max-width: 1170px;
+    max-width: 800px;
 }
 
 html {
@@ -311,22 +297,31 @@ button {
 
 /*-- header --*/
 
+.row-div{
+  width: 2400px;
+  display: flex;
+}
+
 .header-area {
-    border-top: #fdc001 solid 40px;
+    border-top: #fdc001 solid 50px;
     width: 100%;
 }
 
 .logo a {
     color: #910a0a;
-    font-size: 25px;
+    font-size: 36px;
     font-weight: 800;
 
+}
+.logo a:hover{
+  color:red;
 }
 
 .site-navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    
 }
 
 .site-navbar ul {
@@ -338,10 +333,12 @@ button {
 
 .site-navbar ul li a {
     color: #363636;
-    font-size: 17px;
+    font-size: 20px;
     display: block;
+    font-weight: 700;
     text-decoration: none;
     text-transform: uppercase;
+    padding-top: 3%;
 }
 
 .site-navbar ul li {
@@ -407,29 +404,6 @@ button {
 }
 
 
-/* nav-toggler css start */
-
-
-/* intro-area css start */
-
-.intro-area {
-    height: calc(100vh - 61px);
-    display: flex;
-    align-items: center;
-    text-align: center;
-    color: #fff;
-}
-
-
-
-
-/* intro-area css end */
-
-
-/** end header **/
-
-
-/** banner section **/
 
 .full_bg {
     background: url(../images/banner.jpg);
@@ -1268,7 +1242,7 @@ button {
      #DATE PICKER
      ========================================================================== */
   td.active {
-    background-color: #2c6ed5;
+    background-color: #df2c0c;
   }
   
   input[type="date" i] {

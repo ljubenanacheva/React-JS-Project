@@ -7,12 +7,13 @@
   
   .homeContentText {
     display: inline-flex;
-    width: 350px;
+    width: 360px;
     margin-left: 10%;
+    margin-top: 0px;
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    position: relative;
+    position:-webkit-sticky;
     left: 50px;
     
   }
@@ -20,6 +21,7 @@
   .title {
     font-size: 80px;
     margin: 10px;
+    margin-top: 0px;
     color: #fdc001;
     font-weight: 400;
   }
@@ -36,6 +38,7 @@
     color: #fdc001;
     font-weight: 800;
     margin-bottom: 10px;
+    text-shadow: 2px 2px #ff0000;
     
   }
   
@@ -56,11 +59,12 @@
   .carouselItem{
     width: 900px;
     padding: 0%;
+    margin-top: 40px;
     margin-left: 250px;
   }
 .carouselImg{
   width: 900px;
   margin-top: 50px;
-  margin-bottom: 5px;
+  margin-bottom: 0px;
   margin-left: 60px;
 }
