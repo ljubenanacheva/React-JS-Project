@@ -1,7 +1,7 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import { useForm } from "../../hooks/useForm.js";
 import { AuthContext } from "../../contexts/AuthContext.js";
+import { ErrorBox } from "../common/ErrorBox.js";
 
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
@@ -12,15 +12,52 @@ import styles from "./Register.module.css";
 
 export const Register = () => {
   const { onRegisterSubmit } = useContext(AuthContext);
-  const { values, changeHandler, onSubmit } = useForm(
-    {
+  const [error, setError] = useState("");
+  const [values, setValues] = useState({
+    username: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const changeHandler = (e) => {
+    setValues((state) => ({ ...state, [e.target.name]: e.target.value }));
+  };
+
+  const onSubmit = async (event) => {
+    event.preventDefault();
+    if (values.username === "") {
+      setError("The username is required!");
+      event.stopPropagation();
+      return;
+    }
+    if (values.email === "") {
+      setError("The email is required!");
+      event.stopPropagation();
+      return;
+    }
+    if (values.password === "") {
+      setError("The password is required!");
+      event.stopPropagation();
+      return;
+    }
+    if (values.confirmPassword !== values.password) {
+      setError("The password and confirm password must be the same!");
+      event.stopPropagation();
+      return;
+    }
+
+    const result = await onRegisterSubmit(values);
+    if (result) {
+      setError(result);
+    }
+    setValues({
       username: "",
       email: "",
       password: "",
       confirmPassword: "",
-    },
-    onRegisterSubmit
-  );
+    });
+  };
+
   return (
     <div className={styles.registerForm}>
       <h1 className={styles.title}>Register</h1>
@@ -28,6 +65,7 @@ export const Register = () => {
         Please fill in this form to create an account.
       </h5>
       <Form className={styles.form} method="POST" onSubmit={onSubmit}>
+        {error.length > 0 && <ErrorBox message={error} />}
         <Form.Group className="mb-3">
           <Form.Label>Username</Form.Label>
           <Form.Control

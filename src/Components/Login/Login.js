@@ -24,12 +24,12 @@ export const Login = () => {
 
   const onSubmit = async (event) => {
     event.preventDefault();
-    if (values.email == "") {
+    if (values.email === "") {
       setError("The email is required!");
       event.stopPropagation();
       return;
     }
-    if (values.password == "") {
+    if (values.password === "") {
       setError("The password is required!");
       event.stopPropagation();
       return;
