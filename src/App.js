@@ -18,6 +18,7 @@ import { Details } from "./Components/Details/Details.js";
 import { RouteGuard } from "./Components/common/guards/RouteGuard.js";
 import { RecourceGuard } from "./Components/common/guards/RecourseGuard.js";
 import { Wrapper } from "./Components/common/Wrapper/Wrapper.js";
+import { Profile } from "./Components/Profile/Profile.js";
 
 function App() {
   return (
@@ -74,6 +75,14 @@ function App() {
                   element={
                     <Wrapper>
                       <Create />
+                    </Wrapper>
+                  }
+                />
+                <Route
+                  path="/profile"
+                  element={
+                    <Wrapper>
+                      <Profile />
                     </Wrapper>
                   }
                 />
