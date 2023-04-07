@@ -1,5 +1,4 @@
 import { requestFactory } from "./requester.js";
-
 const baseUrl = "http://localhost:3030/data/landmarks";
 
 export const landmarkServiceFactory = (token) => {
@@ -24,11 +23,18 @@ export const landmarkServiceFactory = (token) => {
   const deleteOne = (landmarkId) => {
     request.delete(`${baseUrl}/${landmarkId}`);
   };
+  const getLandmarksByUser = async (userId) => {
+    const query = encodeURIComponent(`_ownerId="${userId}"`);
+    const result = await request.get(`${baseUrl}?where=${query}`);
+    return result;
+  };
+
   return {
     getAll,
     getOne,
     create,
     edit,
     delete: deleteOne,
+    getLandmarksByUser,
   };
 };

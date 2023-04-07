@@ -46,6 +46,10 @@ export const LandmarkProvider = ({ children }) => {
   const getLandmark = (landmarkId) => {
     return landmarks.find((landmark) => landmark._id === landmarkId);
   };
+  const getUserLandmarks = async (userId) => {
+    const result = await landmarkService.getLandmarksByUser(userId);
+    return result;
+  };
 
   const contextValues = {
     landmarks,
@@ -53,6 +57,7 @@ export const LandmarkProvider = ({ children }) => {
     onLandmarkEditSubmit,
     deleteLandmark,
     getLandmark,
+    getUserLandmarks,
   };
 
   return (
