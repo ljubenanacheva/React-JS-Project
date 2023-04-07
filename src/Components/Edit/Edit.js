@@ -6,31 +6,66 @@ import Row from "react-bootstrap/Row";
 import styles from "./Edit.module.css";
 
 import { useParams } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
-import { useForm } from "../../hooks/useForm.js";
-import { useService } from "../../hooks/useService.js";
 import { landmarkServiceFactory } from "../../services/landmarkService.js";
 import { useLandmarkContext } from "../../contexts/LandmarkContext.js";
+import { ErrorBox } from "../common/ErrorBox.js";
 
 export const Edit = () => {
+  const landmarkService = landmarkServiceFactory();
   const { onLandmarkEditSubmit } = useLandmarkContext();
   const { landmarkId } = useParams();
-  const landmarkService = useService(landmarkServiceFactory);
-  const { values, changeHandler, onSubmit, changeValues } = useForm(
-    {
-      _id: "",
+  const [values, setValues] = useState({
+    name: "",
+    location: "",
+    imageUrl: "",
+    category: "",
+    description: "",
+  });
+
+  const [error, setError] = useState("");
+  const changeHandler = (e) => {
+    setValues((state) => ({ ...state, [e.target.name]: e.target.value }));
+  };
+  const onSubmit = async (event) => {
+    event.preventDefault();
+    if (values.name == "") {
+      setError("The name is required!");
+      event.stopPropagation();
+      return;
+    }
+    if (values.location == "") {
+      setError("The location is required!");
+      event.stopPropagation();
+      return;
+    }
+    if (values.imageUrl == "") {
+      setError("The Image Url is required!");
+      event.stopPropagation();
+      return;
+    }
+    if (values.description == "") {
+      setError("The Description is required!");
+      event.stopPropagation();
+      return;
+    }
+
+    const result = await onLandmarkEditSubmit(values);
+    if (result) {
+      setError(result);
+    }
+    setValues({
       name: "",
       location: "",
       imageUrl: "",
       category: "",
       descrition: "",
-    },
-    onLandmarkEditSubmit
-  );
+    });
+  };
   useEffect(() => {
     landmarkService.getOne(landmarkId).then((result) => {
-      changeValues(result);
+      setValues(result);
     });
   }, [landmarkId]);
   return (
@@ -39,6 +74,7 @@ export const Edit = () => {
       <div>
         <img src="\images\landmark.png" className={styles.image} />
       </div>
+      {error.length > 0 && <ErrorBox message={error} />}
       <Form className={styles.form} method="POST" onSubmit={onSubmit}>
         <Form.Group as={Row} className="mb-3" controlId="formHorizontalEmail">
           <Form.Label column sm={2} className={styles.label}>

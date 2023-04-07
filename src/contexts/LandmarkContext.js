@@ -9,7 +9,7 @@ export const LandmarkProvider = ({ children }) => {
   const navigate = useNavigate();
   const [landmarks, setLandmarks] = useState([]);
 
-  const landmarkService = landmarkServiceFactory(); //auth.AccessToken
+  const landmarkService = landmarkServiceFactory();
 
   useEffect(() => {
     landmarkService.getAll().then((result) => {
